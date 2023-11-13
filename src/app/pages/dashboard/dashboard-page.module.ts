@@ -21,11 +21,13 @@ import { MatNativeDateModule } from '@angular/material/core';
 import { MatInputModule } from '@angular/material/input';
 import { ColorPickerModule } from 'ngx-color-picker';
 import { CommonModule } from '@angular/common';
+import { DateWithStringPipe } from 'src/app/shared/pipes/date-with-string.pipe';
 
 @NgModule({
   imports: [
     DashboardPageRoutingModule,
     ButtonComponent,
+    DateWithStringPipe,
     MatCardModule,
     MatSlideToggleModule,
     MatDialogModule,

@@ -1,4 +1,4 @@
-import { Component, ChangeDetectionStrategy, OnInit } from '@angular/core';
+import { Component, ChangeDetectionStrategy, OnInit, ChangeDetectorRef } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { MatDialogRef } from '@angular/material/dialog';
 import * as moment from 'moment';
@@ -16,7 +16,10 @@ export class ChartDialogComponent implements OnInit {
   color!: string;
 
   set selectedSensors(value: string[]) {
-    this.form.addControl('colors', this.fb.control([], Validators.required));
+    if (value) {
+      this.form.removeControl('colors');
+      this.form.addControl('colors', this.fb.control(Array(value.length).fill(null)));
+    }
   }
 
   constructor(
@@ -34,6 +37,8 @@ export class ChartDialogComponent implements OnInit {
   }
 
   public onSetChartData(): void {
-    this.dialogRef.close(this.form.value);
+    if (this.form.valid) {
+      this.dialogRef.close(this.form.value);
+    }
   }
 }

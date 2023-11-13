@@ -9,8 +9,16 @@
   </mat-form-field>
   <div *ngIf="form.value.sensors" class="color-picker-section">
     <div *ngFor="let item of form.value.sensors; let index = index" class="color-picker-wrapper">
-      <input [(colorPicker)]="form.value.colors[index]" [style.background]="form.value.colors[index]"/>
+      <input
+        formControlName="colors"
+        [(colorPicker)]="form.value.colors[index]"
+        [style.background]="form.value.colors[index]"/>
     </div>
+    <ng-container *ngIf="form.value.sensors.length">
+      <div class="error" *ngIf="form.controls['colors'].errors?.['insufficientColors']">
+        All colors must be filled
+      </div>
+    </ng-container>
   </div>
   <mat-form-field class="field">
     <mat-label>Select chart type</mat-label>

@@ -1,6 +1,7 @@
 export interface ChartConfigInterface {
-  chartType: string;
+  chartType: 'bar' | 'line';
   sensors: string[];
   startDate: Date;
   endDate: Date;
+  colors: string[];
 }

@@ -4,6 +4,8 @@ import { ChartDataGeneratorService } from './services/chart-data-generator.servi
 import { MatDialog } from '@angular/material/dialog';
 import { ChartDialogComponent } from './components/chart-dialog/chart-dialog.component';
 import { ChartConfigInterface } from 'src/app/shared/models/chart-config.model';
+import { ChartOptionInterface } from 'src/app/shared/models/chart-option.model';
+import { Observable } from 'rxjs';
 
 @Component({
   selector: 'app-dashboard-page',
@@ -15,6 +17,8 @@ export class DashboardPageComponent implements OnInit {
 
   public btnStatusDescription = StatusDescriptionEnum;
   public adminRules: boolean = false;
+
+  public chartsList$: Observable<ChartOptionInterface[]> = this.chartDataGeneratorService.chartsList$;
 
   constructor(
     private chartDataGeneratorService: ChartDataGeneratorService,
@@ -35,6 +39,10 @@ export class DashboardPageComponent implements OnInit {
 
   public changeRole(): void {
     this.adminRules = !this.adminRules;
+  }
+
+  public trackByFunc(index: number, card: ChartOptionInterface): string {
+    return card.id;
   }
 
 }
