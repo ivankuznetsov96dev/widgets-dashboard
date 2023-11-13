@@ -1,0 +1,30 @@
+.form {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+
+  width: 20rem;
+  height: 20rem;
+  overflow: hidden;
+
+  .field {
+    width: 90%;
+  }
+
+  .color-picker-section {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-around;
+
+    width: 100%;
+    margin-bottom: 20px;
+
+    .color-picker-wrapper {
+      input {
+        width: 30px;
+      }
+    }
+  }
+}

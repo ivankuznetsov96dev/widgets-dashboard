@@ -1,0 +1,12 @@
+<div [class.not-allowed]="isDisabled" [matTooltip]="tooltipViewer" [matTooltipDisabled]="!isDisabled">
+  <button
+    mat-raised-button
+    color="primary"
+    class="btn"
+    [type]="type"
+    [disabled]="isDisabled"
+    (click)="onClick()"
+    >
+    {{ btnName }}
+  </button>
+</div>

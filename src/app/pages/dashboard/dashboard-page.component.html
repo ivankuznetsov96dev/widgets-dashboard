@@ -1,0 +1,49 @@
+<section class="page-section">
+  <div class="page-wrapper">
+    <div class="settings">
+      <app-btn
+        btnName="Add"
+        [tooltipViewer]="btnStatusDescription.NOT_ALLOWED"
+        [isDisabled]="!adminRules"
+        (click)="showNewChartOptionsModal()">
+      </app-btn>
+
+      <mat-slide-toggle
+            class="example-margin"
+            color="primary"
+            [checked]="adminRules"
+            (click)="changeRole()"
+        >
+          activate Admin rules
+        </mat-slide-toggle>
+    </div>
+
+    <div class="dashboards-wrapper">
+      <mat-card class="chart-card">
+        <mat-card-header class="chart-header">
+          <mat-card-title>Test</mat-card-title>
+          <mat-card-subtitle>time zone</mat-card-subtitle>
+          <button mat-icon-button aria-label="Example icon button with a vertical three dot icon">
+            <mat-icon>close</mat-icon>
+          </button>
+        </mat-card-header>
+        <mat-card-content class="chart-content">
+          <div appChart class="chart" chartType="line" chartColor="blue"></div>
+        </mat-card-content>
+      </mat-card>
+
+      <mat-card class="chart-card">
+        <mat-card-header class="chart-header">
+          <mat-card-title>Test</mat-card-title>
+          <mat-card-subtitle>time zone</mat-card-subtitle>
+          <button mat-icon-button aria-label="Example icon button with a vertical three dot icon">
+            <mat-icon>close</mat-icon>
+          </button>
+        </mat-card-header>
+        <mat-card-content class="chart-content">
+          <div appChart class="chart" chartType="line" chartColor="blue"></div>
+        </mat-card-content>
+      </mat-card>
+    </div>
+  </div>
+</section>

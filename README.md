@@ -1,5 +1,11 @@
 # WidgetsDashboard
 
+## gh-pages
+
+The application deployment is located at https://ivankuznetsov96dev.github.io/widgets-dashboard/
+
+## Info
+
 This is test app including two main goals
 
 ## Task 1

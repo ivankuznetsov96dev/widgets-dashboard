@@ -1,0 +1,32 @@
+<form [formGroup]="form" (ngSubmit)="onSetChartData()" class="form">
+  <mat-form-field class="field">
+    <mat-label>Select sensors</mat-label>
+    <mat-select multiple formControlName="sensors" [(ngModel)]="selectedSensors">
+      <mat-option value="temperature">Temperature</mat-option>
+      <mat-option value="humidity">Humidity</mat-option>
+      <mat-option value="light">Light</mat-option>
+    </mat-select>
+  </mat-form-field>
+  <div *ngIf="form.value.sensors" class="color-picker-section">
+    <div *ngFor="let item of form.value.sensors; let index = index" class="color-picker-wrapper">
+      <input [(colorPicker)]="form.value.colors[index]" [style.background]="form.value.colors[index]"/>
+    </div>
+  </div>
+  <mat-form-field class="field">
+    <mat-label>Select chart type</mat-label>
+    <mat-select formControlName="chartType">
+      <mat-option value="line">Line</mat-option>
+      <mat-option value="bar">Bar</mat-option>
+    </mat-select>
+  </mat-form-field>
+  <mat-form-field class="field">
+    <mat-label>Select date range</mat-label>
+    <mat-date-range-input [rangePicker]="picker">
+      <input matStartDate formControlName="startDate" placeholder="Start date">
+      <input matEndDate formControlName="endDate" placeholder="End date">
+    </mat-date-range-input>
+    <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+    <mat-date-range-picker #picker></mat-date-range-picker>
+  </mat-form-field>
+  <app-btn type="submit" btnName="Submit"></app-btn>
+</form>
