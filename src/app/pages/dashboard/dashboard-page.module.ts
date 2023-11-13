@@ -22,6 +22,7 @@ import { MatInputModule } from '@angular/material/input';
 import { ColorPickerModule } from 'ngx-color-picker';
 import { CommonModule } from '@angular/common';
 import { DateWithStringPipe } from 'src/app/shared/pipes/date-with-string.pipe';
+import { ChartCardComponent } from './components/chart-card/chart-card.component';
 
 @NgModule({
   imports: [
@@ -42,7 +43,7 @@ import { DateWithStringPipe } from 'src/app/shared/pipes/date-with-string.pipe';
     ColorPickerModule,
     CommonModule,
   ],
-  declarations: [DashboardPageComponent, ChartDirective, ChartDialogComponent],
+  declarations: [DashboardPageComponent, ChartDirective, ChartDialogComponent, ChartCardComponent],
   providers: [ChartDataGeneratorService]
 })
 

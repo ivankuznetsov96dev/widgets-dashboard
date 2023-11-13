@@ -1,5 +1,4 @@
 .page-section {
-  height: 100%;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -8,50 +7,26 @@
 
 .page-wrapper {
   width: 90%;
-
   .settings {
     display: flex;
     flex-direction: row;
     align-items: center;
     justify-content: space-around;
-    margin-bottom: 6rem;
+    margin: 4rem 0;
   }
 
   .dashboards-wrapper {
     display: grid;
-    grid-template-columns: repeat(1, 1fr);
+    grid-template-columns: repeat(2, 1fr);
     grid-gap: 20px;
     background-color: red;
+
+    @media screen and (max-width: 1120px) {
+      grid-template-columns: unset;
+    }
 
     &:nth-child(3), &:nth-child(4) {
       grid-row: 2 / span 1;
     }
   }
 }
-
-.chart-card {
-  margin: 20px;
-  .chart-header {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-  }
-
-  .chart-content {
-    position: relative;
-    width: 100%;
-    min-height: 200px;
-
-    .chart {
-      position: absolute;
-      width: 100%;
-      height: 100%;
-    }
-  }
-}
-
-// @media screen and (max-width: 576px) {
-//   .dashboards-wrapper {
-//     grid-template-columns: repeat(2, 1fr);
-//   }
-// }

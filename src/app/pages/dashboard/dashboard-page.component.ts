@@ -45,4 +45,8 @@ export class DashboardPageComponent implements OnInit {
     return card.id;
   }
 
+  public deleteChartCard(id: string): void {
+    this.chartDataGeneratorService.deleteChart(id)
+  }
+
 }

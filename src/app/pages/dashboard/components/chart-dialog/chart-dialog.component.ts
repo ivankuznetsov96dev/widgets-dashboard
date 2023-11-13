@@ -13,7 +13,6 @@ import * as moment from 'moment';
 export class ChartDialogComponent implements OnInit {
 
   public form!: FormGroup;
-  color!: string;
 
   set selectedSensors(value: string[]) {
     if (value) {

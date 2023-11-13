@@ -14,6 +14,13 @@ export class ChartDataGeneratorService {
 
   constructor() {}
 
+  public deleteChart(id: string): void {
+    const updatedChartsList = this._chartsList.getValue().filter((chart: ChartOptionInterface) => chart.id !== id);
+    if (updatedChartsList) {
+      this._chartsList.next(updatedChartsList);
+    }
+  }
+
   public dataGenerate(data: ChartConfigInterface): void {
     const xRange = this.xAxisGenerator(data.startDate, data.endDate);
     const config: ChartOptionInterface = {

@@ -1,0 +1,12 @@
+<mat-card class="chart-card">
+  <mat-card-header class="chart-header">
+    <mat-card-title>Chart {{data.id}}</mat-card-title>
+    <mat-card-subtitle>{{data.startDate | dateWithString}} - {{data.endDate | dateWithString}}</mat-card-subtitle>
+    <button mat-icon-button aria-label="Delete card from dashboard" (click)="deleteCard()">
+      <mat-icon>close</mat-icon>
+    </button>
+  </mat-card-header>
+  <mat-card-content class="chart-content">
+    <div appChart class="chart" [chartData]="data"></div>
+  </mat-card-content>
+</mat-card>
