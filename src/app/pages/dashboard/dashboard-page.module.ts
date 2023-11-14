@@ -23,6 +23,7 @@ import { ColorPickerModule } from 'ngx-color-picker';
 import { CommonModule } from '@angular/common';
 import { DateWithStringPipe } from 'src/app/shared/pipes/date-with-string.pipe';
 import { ChartCardComponent } from './components/chart-card/chart-card.component';
+import { ExtendedBtnDirective } from 'src/app/shared/directives/extended-btn.directive';
 
 /**
  * DashboardPageModule
@@ -48,6 +49,7 @@ import { ChartCardComponent } from './components/chart-card/chart-card.component
     MatInputModule,
     ColorPickerModule,
     CommonModule,
+    ExtendedBtnDirective
   ],
   declarations: [DashboardPageComponent, ChartDirective, ChartDialogComponent, ChartCardComponent],
   providers: [ChartDataGeneratorService]

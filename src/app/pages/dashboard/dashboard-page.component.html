@@ -2,6 +2,7 @@
   <div class="page-wrapper">
     <div class="settings">
       <app-btn
+        appExtendedBtn
         btnName="Add"
         [tooltipViewer]="(chartsList$ | async)?.length === 4 ? btnStatusDescription.MAX_LIMIT : btnStatusDescription.NOT_ALLOWED"
         [isDisabled]="!adminRules || (chartsList$ | async)?.length === 4"

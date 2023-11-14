@@ -12,6 +12,9 @@
         },
         "@schematics/angular:pipe": {
           "standalone": true
+        },
+        "@schematics/angular:directive": {
+          "standalone": true
         }
       },
       "root": "",

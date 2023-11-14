@@ -32,6 +32,7 @@ Other libraries that could be used:
 Текст подсказки задается через отдельное поле. (например viewerTooltip).
 
 Новая функциональность не должна конфликтовать с существующей.
+**New: Сделать возможность расширения функционала любой кнопки mat-button
 
 Дополнительно: неактивность кнопки -  это
 *Вид кнопки disabled (https://material.angular.io/components/button/overview )
