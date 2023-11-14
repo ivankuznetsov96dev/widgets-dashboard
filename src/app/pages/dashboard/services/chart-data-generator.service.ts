@@ -1,9 +1,10 @@
-import { Injectable } from "@angular/core";
+import { ApplicationRef, Injectable } from "@angular/core";
 import { BehaviorSubject, Observable } from "rxjs";
 import { DefaultColorsConstant } from "src/app/shared/constants/default-colors.constant";
 import { MonthConstant } from "src/app/shared/constants/month.constant";
 import { ChartConfigInterface } from "src/app/shared/models/chart-config.model";
 import { ChartOptionInterface } from "src/app/shared/models/chart-option.model";
+import { DateRangeInterface } from "src/app/shared/models/date-range.model";
 import * as uuid from 'uuid';
 
 @Injectable()
@@ -12,13 +13,26 @@ export class ChartDataGeneratorService {
   private _chartsList: BehaviorSubject<ChartOptionInterface[]> = new BehaviorSubject<ChartOptionInterface[]>([]);
   readonly chartsList$: Observable<ChartOptionInterface[]> = this._chartsList.asObservable();
 
-  constructor() {}
+  constructor(
+    private appRef: ApplicationRef
+    ) {}
 
   public deleteChart(id: string): void {
     const updatedChartsList = this._chartsList.getValue().filter((chart: ChartOptionInterface) => chart.id !== id);
     if (updatedChartsList) {
       this._chartsList.next(updatedChartsList);
     }
+  }
+
+  public modifyDateRange(data: DateRangeInterface): void {
+    console.log(data)
+    const xRange = this.xAxisGenerator(data.startDate, data.endDate);
+    const chartsList = this._chartsList.getValue().map((chart: ChartOptionInterface) =>
+      ({...chart, xAxis: xRange}));
+      this._chartsList.next([]);
+      this.appRef.tick();
+      this._chartsList.next(chartsList);
+
   }
 
   public dataGenerate(data: ChartConfigInterface): void {
