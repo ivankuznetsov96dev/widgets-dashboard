@@ -3,6 +3,13 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { MatDialogRef } from '@angular/material/dialog';
 import * as moment from 'moment';
 
+/**
+ *Chart configuration dialog component
+ *
+ * @export
+ * @class ChartDialogComponent
+ * @implements {OnInit}
+ */
 @Component({
   selector: 'app-chart-dialog',
   templateUrl: './chart-dialog.component.html',
@@ -12,8 +19,14 @@ import * as moment from 'moment';
 
 export class ChartDialogComponent implements OnInit {
 
+  //*Props
   public form!: FormGroup;
 
+  /**
+   *selectedSensors setter
+   * @param value piced colors
+   * @memberof ChartDialogComponent
+   */
   set selectedSensors(value: string[]) {
     if (value) {
       this.form.removeControl('colors');
@@ -26,7 +39,12 @@ export class ChartDialogComponent implements OnInit {
     private dialogRef: MatDialogRef<ChartDialogComponent>,
     ) {}
 
-  public ngOnInit(): void {
+  /**
+   *ChartDialogComponent ngOnInit
+   *
+   * @memberof ChartDialogComponent
+   */
+  ngOnInit(): void {
     this.form = this.fb.group({
       sensors: [null, [Validators.required]],
       chartType: [null, [Validators.required]],
@@ -35,6 +53,12 @@ export class ChartDialogComponent implements OnInit {
     });
   }
 
+  /**
+   * Send form data to parent
+   *
+   * @public
+   * @memberof ChartDialogComponent
+   */
   public onSetChartData(): void {
     if (this.form.valid) {
       this.dialogRef.close(this.form.value);

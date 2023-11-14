@@ -24,6 +24,12 @@ import { CommonModule } from '@angular/common';
 import { DateWithStringPipe } from 'src/app/shared/pipes/date-with-string.pipe';
 import { ChartCardComponent } from './components/chart-card/chart-card.component';
 
+/**
+ * DashboardPageModule
+ *
+ * @export
+ * @class DashboardPageModule
+ */
 @NgModule({
   imports: [
     DashboardPageRoutingModule,

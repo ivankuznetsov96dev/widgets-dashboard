@@ -2,6 +2,12 @@ import { ChangeDetectionStrategy, Component, EventEmitter, Input, Output } from 
 import { MatButtonModule } from "@angular/material/button";
 import { MatTooltipModule } from '@angular/material/tooltip';
 
+/**
+ * Shared ButtonComponent
+ *
+ * @export
+ * @class ButtonComponent
+ */
 @Component({
   selector: 'app-btn',
   templateUrl: './button.component.html',
@@ -11,6 +17,7 @@ import { MatTooltipModule } from '@angular/material/tooltip';
   standalone: true
 })
 export class ButtonComponent {
+  //*Props
   @Input() btnName!: string;
   @Input() type: string = 'button';
   @Input() isDisabled: boolean = false;
@@ -19,6 +26,11 @@ export class ButtonComponent {
 
   constructor() {}
 
+  /**
+   * onClick func
+   *
+   * @memberof ButtonComponent
+   */
   public onClick(): void {
     this.onClickEvent.emit();
   }

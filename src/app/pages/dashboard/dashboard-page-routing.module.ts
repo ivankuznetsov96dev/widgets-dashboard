@@ -2,6 +2,7 @@ import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { DashboardPageComponent } from './dashboard-page.component';
 
+//*Routes props
 const routes: Routes = [
   {
     path: '',
@@ -9,6 +10,12 @@ const routes: Routes = [
   },
 ];
 
+/**
+ *DashboardPageRoutingModule
+ *
+ * @export
+ * @class DashboardPageRoutingModule
+ */
 @NgModule({
   imports: [RouterModule.forChild(routes)],
   exports: [RouterModule],

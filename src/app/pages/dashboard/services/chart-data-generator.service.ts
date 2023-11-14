@@ -7,9 +7,16 @@ import { ChartOptionInterface } from "src/app/shared/models/chart-option.model";
 import { DateRangeInterface } from "src/app/shared/models/date-range.model";
 import * as uuid from 'uuid';
 
+/**
+ * Service to generate and work with chart data
+ *
+ * @export
+ * @class ChartDataGeneratorService
+ */
 @Injectable()
 export class ChartDataGeneratorService {
 
+  //*chartsList props
   private _chartsList: BehaviorSubject<ChartOptionInterface[]> = new BehaviorSubject<ChartOptionInterface[]>([]);
   readonly chartsList$: Observable<ChartOptionInterface[]> = this._chartsList.asObservable();
 
@@ -17,6 +24,13 @@ export class ChartDataGeneratorService {
     private appRef: ApplicationRef
     ) {}
 
+  /**
+   * Func delete chart in chartlist by id
+   *
+   * @public
+   * @param {string} id
+   * @memberof ChartDataGeneratorService
+   */
   public deleteChart(id: string): void {
     const updatedChartsList = this._chartsList.getValue().filter((chart: ChartOptionInterface) => chart.id !== id);
     if (updatedChartsList) {
@@ -24,17 +38,29 @@ export class ChartDataGeneratorService {
     }
   }
 
+  /**
+   * Func for modify date range in all charts
+   *
+   * @public
+   * @param {DateRangeInterface} data
+   * @memberof ChartDataGeneratorService
+   */
   public modifyDateRange(data: DateRangeInterface): void {
-    console.log(data)
     const xRange = this.xAxisGenerator(data.startDate, data.endDate);
     const chartsList = this._chartsList.getValue().map((chart: ChartOptionInterface) =>
       ({...chart, xAxis: xRange}));
       this._chartsList.next([]);
       this.appRef.tick();
       this._chartsList.next(chartsList);
-
   }
 
+  /**
+   * Func to generate new charts data
+   *
+   * @public
+   * @param {ChartConfigInterface} data
+   * @memberof ChartDataGeneratorService
+   */
   public dataGenerate(data: ChartConfigInterface): void {
     const xRange = this.xAxisGenerator(data.startDate, data.endDate);
     const config: ChartOptionInterface = {
@@ -48,6 +74,15 @@ export class ChartDataGeneratorService {
     this._chartsList.next([...this._chartsList.getValue(), config]);
   }
 
+  /**
+   * Func to generate xAxis(date range) prop for chart
+   *
+   * @private
+   * @param {Date} start
+   * @param {Date} end
+   * @return {*}  {string[]}
+   * @memberof ChartDataGeneratorService
+   */
   private xAxisGenerator(start: Date, end: Date): string[] {
     const startDay = start.getDate();
     const endDay = end.getDate();
@@ -89,11 +124,29 @@ export class ChartDataGeneratorService {
     return timePeriod;
   }
 
+  /**
+   * Func to getting difference in days range
+   *
+   * @private
+   * @param {Date} start
+   * @param {Date} end
+   * @return {*}  {number}
+   * @memberof ChartDataGeneratorService
+   */
   private getDifferenceInDays(start: Date, end: Date): number {
     const oneDay: number = 24 * 60 * 60 * 1000;
     return Math.round(Math.abs((start.getTime() - end.getTime()) / oneDay));
   }
 
+  /**
+   * Func to generate chart value data
+   * (must be change on getting fom API)
+   *
+   * @private
+   * @param {number} length
+   * @return {*}  {number[]}
+   * @memberof ChartDataGeneratorService
+   */
   private seriesDataGenerator(length: number): number[] {
     const data = [];
     for (let i = 0; i < length; i++) {

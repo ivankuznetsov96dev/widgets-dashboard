@@ -1,6 +1,7 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 
+//*Routes props
 const routes: Routes = [
   {
     path: 'pages',
@@ -11,6 +12,12 @@ const routes: Routes = [
   { path: '**', redirectTo: 'pages' },
 ];
 
+/**
+ * AppRoutingModule
+ *
+ * @export
+ * @class AppRoutingModule
+ */
 @NgModule({
   imports: [RouterModule.forRoot(routes)],
   exports: [RouterModule]
