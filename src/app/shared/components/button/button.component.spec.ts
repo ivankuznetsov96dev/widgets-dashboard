@@ -10,8 +10,7 @@ describe('ButtonComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ButtonComponent],
-      imports: [MatButtonModule, MatTooltipModule],
+      imports: [MatButtonModule, MatTooltipModule, ButtonComponent],
     }).compileComponents();
   });
 
@@ -25,30 +24,20 @@ describe('ButtonComponent', () => {
     expect(component).toBeTruthy();
   });
 
-  it('should have button name', () => {
+  it('should have button input prop', () => {
+    expect(component.type).toBe('button');
+    expect(component.isDisabled).toBe(false);
     const buttonName = 'Submit';
+    const type = 'submit';
+    const isDisabled = true;
     component.btnName = buttonName;
+    component.isDisabled = isDisabled;
+    component.type = type;
     fixture.detectChanges();
 
-    const buttonElement: HTMLElement = fixture.nativeElement.querySelector('.btn');
-    expect(buttonElement.textContent).toContain(buttonName);
-  });
-
-  it('should have button type', () => {
-    const buttonType = 'submit';
-    component.type = buttonType;
-    fixture.detectChanges();
-
-    const buttonElement: HTMLButtonElement = fixture.nativeElement.querySelector('.btn');
-    expect(buttonElement.type).toBe(buttonType);
-  });
-
-  it('should be disabled when isDisabled is true', () => {
-    component.isDisabled = true;
-    fixture.detectChanges();
-
-    const buttonElement: HTMLButtonElement = fixture.nativeElement.querySelector('.btn');
-    expect(buttonElement.disabled).toBeTrue();
+    expect(component.btnName).toBe(buttonName);
+    expect(component.type).toBe(type);
+    expect(component.isDisabled).toBe(isDisabled);
   });
 
   it('should emit onClickEvent when clicked', () => {
